@@ -16,7 +16,7 @@ Se adjunta una Colab donde explica paso a paso para:
 - evaluar el modelo
 - realizar una predicción
 
-## Interacción con la interfaz de FasAPI
+## Interacción con la interfaz de FastAPI
 
 En caso de querer interactuar con el modelo desde la interfaz que proporciona FastAPI, se deberán seguir los siguientes pasos:
 

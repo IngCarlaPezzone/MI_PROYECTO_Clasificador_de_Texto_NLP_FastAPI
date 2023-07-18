@@ -20,7 +20,7 @@ Se adjunta una Colab (se puede abrir directamente con el botón de Colab) donde 
 Para realizar la interacción con FastAPI y/o con Streamlit se necesita clonar el repositorio. Para ello, elegir una carpeta donde se quiera guardar el proyecto y abrir una terminal en dicha ubicación.
 Hacer `git clone https://github.com/IngCarlaPezzone/MI_PROYECTO_Clasificador_de_Texto_NLP_FastAPI.git` para clonar el proyecto.
 
-## Interacción con la interfaz de FasAPI
+## Interacción con la interfaz de FastAPI
 
 En caso de querer interactuar con el modelo desde la interfaz que proporciona FastAPI, se deberán seguir los siguientes pasos:
 

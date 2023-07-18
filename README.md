@@ -49,4 +49,4 @@ Para poder usarlo, se deberán seguir los siguientes pasos:
 
 Así se ve la interfaz:
 
-![](images\app_streamlit.png)
+![](https://github.com/IngCarlaPezzone/MI_PROYECTO_Clasificador_de_Texto_NLP_FastAPI/blob/main/images/app_streamlit.png)

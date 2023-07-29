@@ -60,7 +60,45 @@ def clasificar_texto(texto: str):
     # Realizar la clasificación del texto
     prediccion = model.predict(secuencia)[0]
     print('prediccion', prediccion)
-    predicted_label = categorias[prediccion.argmax()]
+    predicted_label = int(prediccion.argmax())
+    #predicted_label = categorias[prediccion.argmax()]
     print('--->', predicted_label)
-   
 
+    probabilidad = float(prediccion[predicted_label])
+
+    # Obtener el nombre de la categoría predicha
+    categoria_predicha = categorias[predicted_label]
+
+    # Devolver la clase y la probabilidad de la clasificación
+    return {'categoria': categoria_predicha, 'clase': predicted_label, 'probabilidad': float(probabilidad)}
+   
+def presentacion():
+    return '''
+    <html>
+        <head>
+            <title>Clasificador de textos con NLP</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    padding: 20px;
+                }
+                h1 {
+                    color: #333;
+                    text-align: center;
+                }
+                p {
+                    color: #666;
+                    text-align: center;
+                    font-size: 18px;
+                    margin-top: 20px;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>Clasificador de textos con TensorFlow</h1>
+            <p>Bienvenido a la interfaz del clasificador de textos.</p>
+            <p>Escriba <span style="background-color: lightgray;">/docs</span> a continuación de la URL actual de esta página para interactuar con la API</p>
+            <p> Visita mi perfil en <a href="https://www.linkedin.com/in/ingambcarlapezzone/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=linkedin"></a></p>
+        </body>
+    </html>
+    '''

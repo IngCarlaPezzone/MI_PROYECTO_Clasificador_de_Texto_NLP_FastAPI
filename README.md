@@ -1,4 +1,14 @@
-# Clasificador de textos con NLP con tensorflow y predicción en FastAPI
+![Python](https://img.shields.io/badge/-Python-333333?style=flat&logo=python)
+![TensorFlow](https://img.shields.io/badge/-TensorFlow-333333?style=flat&logo=tensorflow)
+![Pandas](https://img.shields.io/badge/-Pandas-333333?style=flat&logo=pandas)
+![Numpy](https://img.shields.io/badge/-Numpy-333333?style=flat&logo=numpy)
+![Scikitlearn](https://img.shields.io/badge/-Scikitlearn-333333?style=flat&logo=scikitlearn)
+![Matplotlib](https://img.shields.io/badge/-Matplotlib-333333?style=flat&logo=Matplotlib)
+![FastAPI](https://img.shields.io/badge/-FastAPI-333333?style=flat&logo=fastapi)
+![Streamlit](https://img.shields.io/badge/-Streamlit-333333?style=flat&logo=streamlit)
+![ChatGPT](https://img.shields.io/badge/-ChatGPT-333333?style=flat&logo=openai)
+
+# Clasificador de textos con tensorflow y predicción en FastAPI
 
 Este proyecto consiste en la clasificación de textos con un modelo de redes neuronales utilizando LSTM bidireccionales. Para facilitar la interacción con el modelo, se implementó una interfaz usando FastAPI.
 

@@ -60,3 +60,13 @@ Para poder usarlo, se deberán seguir los siguientes pasos:
 Así se ve la interfaz:
 
 ![](https://github.com/IngCarlaPezzone/MI_PROYECTO_Clasificador_de_Texto_NLP_FastAPI/blob/main/images/app_streamlit.png)
+
+# Actualización!! (26/08/23)
+
+## Deploy de la app de stramlit en render.com
+
+Se hizo el deploy de la aplicación realizada en streamlit en `render.com` que es una nube unificada para crear y ejecutar aplicaciones y sitios web y despliegues automáticos desde Git. Para poder deployar este proyecto se siguieron estos pasos:
+
+- Generación de un Dockerfile cuya imagen es Python 3.10. Esto se hace porque Render usa por defecto Python 3.7, lo que no es compatible con las versiones de las librerías trabajadas en este proyecto, por tal motivo, se opctó por deployar el proyecto dentro de este contenedor. Por otra parte, también fue necesario agregar en la creación del contenedor la descarga de las stopwords y wordnet de NLTK, dado que en el scrip original del proyecto se hacía mediante descarga y esto no es posible durante el deploy. Se puede ver el detalle del documento [Dockerfile](Dockerfile).
+- Se generó un servicio nuevo  en `render.com`, conectado al presente repositorio y utilizando Docker como Runtime.
+- Finalmente, el servicio queda corriendo en `https://clasificatexto.onrender.com/`.

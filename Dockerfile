@@ -1,24 +1,31 @@
+# Imagen
 FROM python:3.10-slim
 
+# directorio de trabajo de la app
 WORKDIR /st_app
 
+# Copia los requerimientos del anfitrion
 COPY requirements.txt ./requirements.txt
 
+# Instala los requerimientos
 RUN pip install -r requirements.txt
 
-#RUN python3 -m nltk.downloader -d /usr/local/lib/python3.10/site-packages/nltk/corpus stopwords
+# Crea una variable para guardar los descargables de nltk
 ENV NLTK_DATA /nltk_data/ ADD . $NLTK_DATA
 
-# RUN python3 -m nltk.downloader stopwords -d /usr/share/nltk_data
-
+# Descarga y guarda stopwords y wordnet
 RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" && apt-get install -y python3-pip \
     && pip3 install nltk --no-cache-dir \
     && python3 -m nltk.downloader -d /usr/local/share/nltk_data stopwords wordnet
 
+# Puerto
 EXPOSE 8501
 
+# Copia todo lo del anfitrion (clonado de github)
 COPY . .
 
+# Comando que se ejecutarán cuando inicie el contenedor
 ENTRYPOINT ["streamlit", "run"]
 
+# Argumentos para el comando entrypoint
 CMD ["st_app.py"]

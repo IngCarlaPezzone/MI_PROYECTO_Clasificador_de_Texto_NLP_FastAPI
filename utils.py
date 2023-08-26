@@ -2,11 +2,12 @@
 import tensorflow as tf
 from tensorflow.keras.preprocessing.text import tokenizer_from_json
 from tensorflow.keras.preprocessing.sequence import pad_sequences
+from nltk.corpus import stopwords
 import json
 
 import nltk
 from nltk.corpus import stopwords
-nltk.download('stopwords')
+#nltk.download('stopwords')
 from nltk.stem import WordNetLemmatizer
 
 # Seteo de la longitud máxima para la secuencia

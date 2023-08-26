@@ -1,12 +1,14 @@
 FROM python:3.10-slim
 
-COPY . .
+WORKDIR /st_app
+
+COPY requirements.txt ./requirements.txt
+
+RUN pip install -r requirements.txt
 
 EXPOSE 8501
 
-WORKDIR /st_app
-
-RUN pip install -r requirements.txt
+COPY . .
 
 ENTRYPOINT ["streamlit", "run"]
 

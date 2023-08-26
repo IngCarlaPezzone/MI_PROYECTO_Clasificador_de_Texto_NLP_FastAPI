@@ -6,7 +6,9 @@ COPY requirements.txt ./requirements.txt
 
 RUN pip install -r requirements.txt
 
-RUN [ "python3", "-c", "import nltk; nltk.download('stopwords')" ]
+RUN pip install nltk && \
+    mkdir ~/nltk_data && \
+    python -c "import nltk; nltk.download(['stopwords'])"
 
 EXPOSE 8501
 

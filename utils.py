@@ -2,7 +2,6 @@
 import tensorflow as tf
 from tensorflow.keras.preprocessing.text import tokenizer_from_json
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-from nltk.corpus import stopwords
 import json
 
 import nltk

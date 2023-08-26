@@ -8,3 +8,4 @@ scikit-learn
 streamlit
 tensorflow
 uvicorn
+protobuf

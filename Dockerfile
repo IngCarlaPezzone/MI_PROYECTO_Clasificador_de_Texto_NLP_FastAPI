@@ -4,7 +4,7 @@ WORKDIR /st_app
 
 COPY requirements.txt ./requirements.txt
 
-RUN pip install -r requiremts.txt
+RUN pip install -r requirements.txt
 
 EXPOSE 8501
 

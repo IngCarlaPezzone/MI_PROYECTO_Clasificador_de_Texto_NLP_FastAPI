@@ -5,7 +5,7 @@ from utils import clasificar_texto
 titulo = st.title('Clasificador de textos 🌈⚽️🧬')
 
 # Texto que ingresa el usuario
-texto = st.text_input('Ingrese el texto a clasificar aquí: 👇')
+texto = st.text_input('Ingrese el texto (en inglés) a clasificar aquí: 👇')
 
 # Define una función anónima para envolver la llamada a clasificar_texto
 clasificar = lambda: clasificar_texto(texto)

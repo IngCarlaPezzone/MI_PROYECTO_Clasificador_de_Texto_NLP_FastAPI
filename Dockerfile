@@ -6,7 +6,7 @@ COPY requirements.txt ./requirements.txt
 
 RUN pip install -r requirements.txt
 
-RUN python3 -m nltk.downloader -d /usr/nltk_data stopwords
+RUN python3 -m nltk.downloader -d /root/nltk_data stopwords
 
 EXPOSE 8501
 

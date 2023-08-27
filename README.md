@@ -10,9 +10,9 @@
 ![Docker](https://img.shields.io/badge/-Docker-333333?style=flat&logo=docker)
 ![Render](https://img.shields.io/badge/-Render-333333?style=flat&logo=render)
 
-# Clasificador de textos con tensorflow y predicción en FastAPI, Stramlit y Deploy en Render
+# Clasificador de textos con tensorflow y predicción en FastAPI, Streamlit y Deploy en Render
 
-Este proyecto consiste en la clasificación de textos con un modelo de redes neuronales utilizando LSTM bidireccionales. Para facilitar la interacción con el modelo, se implementó una interfaz usando FastAPI. Luego, en las actualizaciones posteriores, se agregó una interfaz de Stramlit y finalmente el deploy en Render.
+Este proyecto consiste en la clasificación de textos con un modelo de redes neuronales utilizando LSTM bidireccionales. Para facilitar la interacción con el modelo, se implementó una interfaz usando FastAPI. Luego, en las actualizaciones posteriores, se agregó una interfaz de Streamlit y finalmente el deploy en Render.
 
 Para el entrenamiento se recolectaron 150 URL de wikipedia de tres categorías distintas. Para obtener el listado de las URL se utilizó ChatGPT y con python se automatizó la extracción de los textos, la limpieza y generación del conjunto de datos limpio.
 
@@ -65,7 +65,7 @@ Así se ve la interfaz:
 
 # Actualización!! (26/08/23)
 
-## Deploy de la app de stramlit en render.com
+## Deploy de la app de streamlit en render.com
 
 Se hizo el deploy de la aplicación realizada en streamlit en `render.com` que es una nube unificada para crear y ejecutar aplicaciones y sitios web y despliegues automáticos desde Git. Para poder deployar este proyecto se siguieron estos pasos:
 

@@ -1,9 +1,15 @@
 import streamlit as st
 from utils import clasificar_texto
 
+# Configura el título y el icono de la pestaña del navegador
+st.set_page_config(
+    page_title="Clasificador de textos",
+    page_icon="🌈")
+
 # Titulo de la app
 titulo = st.title('Clasificador de textos')
 
+# Introducción
 st.write('Este modelo puede clasificar un texto en tres categorías:')
 st.write('🌈 Meteorología')
 st.write('⚽️ Deporte')

@@ -7,10 +7,12 @@
 ![FastAPI](https://img.shields.io/badge/-FastAPI-333333?style=flat&logo=fastapi)
 ![Streamlit](https://img.shields.io/badge/-Streamlit-333333?style=flat&logo=streamlit)
 ![ChatGPT](https://img.shields.io/badge/-ChatGPT-333333?style=flat&logo=openai)
+![Docker](https://img.shields.io/badge/-Docker-333333?style=flat&logo=docker)
+![Render](https://img.shields.io/badge/-Render-333333?style=flat&logo=render)
 
-# Clasificador de textos con tensorflow y predicción en FastAPI
+# Clasificador de textos con tensorflow y predicción en FastAPI, Stramlit y Deploy en Render
 
-Este proyecto consiste en la clasificación de textos con un modelo de redes neuronales utilizando LSTM bidireccionales. Para facilitar la interacción con el modelo, se implementó una interfaz usando FastAPI.
+Este proyecto consiste en la clasificación de textos con un modelo de redes neuronales utilizando LSTM bidireccionales. Para facilitar la interacción con el modelo, se implementó una interfaz usando FastAPI. Luego, en las actualizaciones posteriores, se agregó una interfaz de Stramlit y finalmente el deploy en Render.
 
 Para el entrenamiento se recolectaron 150 URL de wikipedia de tres categorías distintas. Para obtener el listado de las URL se utilizó ChatGPT y con python se automatizó la extracción de los textos, la limpieza y generación del conjunto de datos limpio.
 

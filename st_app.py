@@ -1,11 +1,12 @@
 import streamlit as st
+
+# Configura el título y el icono de la pestaña del navegador
+st.set_page_config(
+    page_title="Clasificador de textos",
+    page_icon="🌈")
+
 from utils import clasificar_texto
 from pgadmin_connect import guardar_prediccion, guardar_calificacion
-
-# # Configura el título y el icono de la pestaña del navegador
-# st.set_page_config(
-#     page_title="Clasificador de textos",
-#     page_icon="🌈")
 
 # Titulo de la app
 titulo = st.title('Clasificador de textos')
@@ -25,12 +26,16 @@ if 'mostrar_casillas' not in st.session_state:
 
 if 'categoria_correcta' not in st.session_state:
     st.session_state.categoria_correcta = False
+    
+if 'prediccion' not in st.session_state:
+    st.session_state.prediccion = None
 
 # Texto que ingresa el usuario
 texto = st.text_input('Ingrese el texto (en inglés) a clasificar aquí: 👇')
 
 # Define una función anónima para envolver la llamada a clasificar_texto
 clasificar = lambda: clasificar_texto(texto)
+
 
 # Botón para hacer la predicción
 if st.button('Predecir', on_click=clasificar, disabled=len(texto) == 0):
@@ -46,6 +51,8 @@ if st.button('Predecir', on_click=clasificar, disabled=len(texto) == 0):
     probabilidad_formateada = float(probabilidad_formateada.replace('%', ''))
     # Guarda la información en una base de datos
     guardar_prediccion(texto, resultado['categoria'], probabilidad_formateada)
+    
+    st.session_state.prediccion = resultado['categoria']
     
     # Cambia el estado de la variable a True para indicar que la predicción se ha realizado
     st.session_state.prediccion_realizada = True
@@ -67,19 +74,23 @@ if st.session_state.prediccion_realizada:
     # Botón para mostrar las casillas de verificación
     if st.button('👎'):
         st.session_state.mostrar_casillas = True
+        
+    # Lista de todas las categorías posibles
+    categorias = ["Meteorology", "Sport", "Biology"]
 
+    print("predicion es", st.session_state.prediccion)
+    # Filtra las categorías que son diferentes a la predicción del modelo
+    categorias_filtradas = [cat for cat in categorias if not cat.startswith(st.session_state.prediccion)]
+
+       
     if st.session_state.mostrar_casillas:
-        st.write('Seleccione la categoría correcta:')
-        elige_meteorology = st.checkbox("Meteorology")
-        elige_sport = st.checkbox("Sport")
-        elige_biology = st.checkbox("Biology")
-
-        if elige_meteorology:
-            st.session_state.categoria_correcta = 'Meteorology'
-        elif elige_sport:
-            st.session_state.categoria_correcta = 'Sport'
-        elif elige_biology:
-            st.session_state.categoria_correcta = 'Biology'
+        st.markdown('##### Seleccione cuál era la categoría correcta:')
+        
+        # Muestra las casillas de verificación solo para las categorías filtradas
+        for categoria in categorias_filtradas:
+            seleccionada = st.checkbox(categoria)
+            if seleccionada:
+                st.session_state.categoria_correcta = categoria
 
         if st.session_state.categoria_correcta:
             guardar_calificacion(texto, st.session_state.categoria_correcta)
@@ -87,7 +98,7 @@ if st.session_state.prediccion_realizada:
             st.success('Intenta otra predicción 🤓')
             st.session_state.prediccion_realizada = False
             st.session_state.mostrar_casillas = False
-            st.session_state.categoria_correcta = False
+            st.session_state.categoria_correcta = None
 
 with st.sidebar:
     # Agrega el enlace a LinkedIn y github

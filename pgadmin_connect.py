@@ -2,9 +2,9 @@ import streamlit as st
 import psycopg2
 
 # Configuración de página
-st.set_page_config(
-    page_title="Clasificador de textos",
-    page_icon="🌈")
+# st.set_page_config(
+#     page_title="Clasificador de textos",
+#     page_icon="🌈")
 
 # Inicializa la conexión
 @st.cache_resource

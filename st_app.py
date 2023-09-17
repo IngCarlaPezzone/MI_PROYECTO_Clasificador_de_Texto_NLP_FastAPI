@@ -1,6 +1,6 @@
 import streamlit as st
 
-# Configura el título y el icono de la pestaña del navegador
+# Configura el título y el icono de la pestaña del navegador.
 st.set_page_config(
     page_title="Clasificador de textos",
     page_icon="🌈")

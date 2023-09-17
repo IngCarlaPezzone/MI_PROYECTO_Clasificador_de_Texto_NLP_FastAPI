@@ -1,5 +1,5 @@
 beautifulsoup4
-fastapi
+#fastapi
 keras
 nltk
 numpy
@@ -8,4 +8,4 @@ scikit-learn
 streamlit
 tensorflow
 uvicorn
-protobuf
+psycopg2

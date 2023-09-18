@@ -1,10 +1,18 @@
+import os
 import streamlit as st
 import psycopg2
 
+# # Inicializa la conexión
+# @st.cache_resource
+# def init_connection():
+#     return psycopg2.connect(**st.secrets["postgres"])
+# Obtén las variables de entorno
+DATABASE_URL = os.getenv("DATABASE_URL")
+
 # Inicializa la conexión
-@st.cache_resource
+@st.cache(allow_output_mutation=True)
 def init_connection():
-    return psycopg2.connect(**st.secrets["postgres"])
+    return psycopg2.connect(DATABASE_URL)
 
 conn = init_connection()
 

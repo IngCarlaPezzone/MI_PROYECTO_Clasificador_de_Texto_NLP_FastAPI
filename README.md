@@ -9,6 +9,7 @@
 ![ChatGPT](https://img.shields.io/badge/-ChatGPT-333333?style=flat&logo=openai)
 ![Docker](https://img.shields.io/badge/-Docker-333333?style=flat&logo=docker)
 ![Render](https://img.shields.io/badge/-Render-333333?style=flat&logo=render)
+![Postgres](https://img.shields.io/badge/-Postgres-333333?style=flat&logo=postgresql)
 
 # Clasificador de textos con tensorflow y predicción en FastAPI, Streamlit y Deploy en Render
 
@@ -70,5 +71,20 @@ Así se ve la interfaz:
 Se hizo el deploy de la aplicación realizada en streamlit en `render.com` que es una nube unificada para crear y ejecutar aplicaciones y sitios web y despliegues automáticos desde Git. Para poder deployar este proyecto se siguieron estos pasos:
 
 - Generación de un Dockerfile cuya imagen es Python 3.10. Esto se hace porque Render usa por defecto Python 3.7, lo que no es compatible con las versiones de las librerías trabajadas en este proyecto, por tal motivo, se opctó por deployar el proyecto dentro de este contenedor. Por otra parte, también fue necesario agregar en la creación del contenedor la descarga de las stopwords y wordnet de NLTK, dado que en el scrip original del proyecto se hacía mediante descarga y esto no es posible durante el deploy. Se puede ver el detalle del documento [Dockerfile](Dockerfile).
-- Se generó un servicio nuevo  en `render.com`, conectado al presente repositorio y utilizando Docker como Runtime.
-- Finalmente, el servicio queda corriendo en `https://clasificatexto.onrender.com/`.
+- Se generó un servicio **Web Service** nuevo  en `render.com`, conectado al presente repositorio y utilizando Docker como Runtime.
+- Finalmente, el servicio queda corriendo en [https://clasificatexto.onrender.com/](https://clasificatexto.onrender.com/).
+
+# Actualización!! (18/09/23)
+
+## Integración con una base de datos Postgres
+
+Se agregaron nuevas funcionalidades a la aplicación de streamlit para guardar el texto ingresado por el usuario, la predicción del modelo y la calificación de la predicción. En este último punto se agregaron secciones a la aplicación para que el usuario califique la predicción como 👍 o 👎. En caso de que el modelo se haya equivocado, y el usuario califique como negativo, se permite al usuario que indique cuál era la predicción real del texto ingresado. De esta manera, se guardan todos estos datos para evaluar el modelo y para un futuro reentrenamiento del modelo.
+
+Para hacer esta integración con la base de datos se realizaron los siguientes pasos:
+
+- Se modificó el código `st_app.py` para agregar las nuevas funcionalidades.
+- Se creo el archivo `pgadmin_connect_render.py` donde contiene la conexión a la base de datos Postgres que proporciona Render y las funciones que permiten guarda los datos a la base de datos.
+- Se agregó un nuevo servicio **PostgreSQL** en `render.com`.
+- Se agregó como variable de ambiente la **Internal Database URL** para conectar el proyecto con la base de datos de Render.
+- Se creo una base de datos en `pgAdmin` conectada a la **External Database URL** para conectar con la base de datos de Render. Allí se creó una nueva tabla *predicciones* con los *campos id*, *texto*, *resultado*, *probabilidad_formateada* y *calificacion* donde se almacenan los datos generados por la aplicación.
+- Finalmente, el servicio queda corriendo en [https://clasificatexto.onrender.com/](https://clasificatexto.onrender.com/).

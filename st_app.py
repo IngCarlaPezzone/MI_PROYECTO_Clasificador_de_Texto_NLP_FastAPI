@@ -6,7 +6,7 @@ st.set_page_config(
     page_icon="🌈")
 
 from utils import clasificar_texto
-from pgadmin_connect_render import guardar_prediccion, guardar_calificacion
+from pgadmin_connect_render import *
 
 # Titulo de la app
 titulo = st.title('Clasificador de textos')

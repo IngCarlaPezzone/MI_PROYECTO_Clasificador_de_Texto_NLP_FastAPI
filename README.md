@@ -91,15 +91,15 @@ Para hacer esta integración con la base de datos se realizaron los siguientes p
 
 A continuación, se muestran algunas imágenes de la aplicación:
 
-#### Opciones para calificar la predicción
+### Opciones para calificar la predicción
 
 ![](https://github.com/IngCarlaPezzone/MI_PROYECTO_Clasificador_de_Texto_NLP_FastAPI/blob/main/images/opciones_calificacion.png)
 
-#### Resultado de predicción positiva
+### Resultado de predicción positiva
 
 ![](https://github.com/IngCarlaPezzone/MI_PROYECTO_Clasificador_de_Texto_NLP_FastAPI/blob/main/images/predicci%C3%B3n_positiva.png)
 
-#### Opciones cuando la predicción fue negativa
+### Opciones cuando la predicción fue negativa
 
 Aca se muestran las opciones distintas a la que predijo el modelo. Porque si califica la predicción como 👎 quiere decir que esa categoría no era correcta y debe elegir por alguna de las otras dos categorías.
 

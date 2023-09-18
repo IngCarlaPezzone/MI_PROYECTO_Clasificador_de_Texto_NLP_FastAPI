@@ -35,7 +35,7 @@ if 'prediccion' not in st.session_state:
     st.session_state.prediccion = None
 
 # Texto que ingresa el usuario
-texto = st.text_input('Ingrese el texto (en inglés) a clasificar aquí: 👇')
+texto = st.text_input('Ingrese el texto (EN INGLÉS) a clasificar aquí: 👇')
 
 # Define una función anónima para envolver la llamada a clasificar_texto
 clasificar = lambda: clasificar_texto(texto)

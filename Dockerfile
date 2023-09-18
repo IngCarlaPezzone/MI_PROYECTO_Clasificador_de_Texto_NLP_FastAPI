@@ -4,12 +4,6 @@ FROM python:3.10-slim
 # directorio de trabajo de la app
 WORKDIR /st_app
 
-# Crea el directorio .streamlit
-#RUN mkdir -p /st_app/.streamlit
-
-# Copia el archivo secrets.toml desde /etc/secrets/ a .streamlit/
-#COPY /etc/secrets/secrets.toml /st_app/.streamlit/secrets.toml
-
 # Copia los requerimientos del anfitrion
 COPY requirements.txt ./requirements.txt
 

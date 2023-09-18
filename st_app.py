@@ -1,10 +1,14 @@
+# Importaciones
 import streamlit as st
 
 # Configura el título y el icono de la pestaña del navegador.
+# Se dejo en este lugar porque de la forma que se lee el código si se coloca luego de pgadmin_connect_render
+# la configuración deja de mostrarse
 st.set_page_config(
     page_title="Clasificador de textos",
     page_icon="🌈")
 
+# Importaciones de módulos personalizados
 from utils import clasificar_texto
 from pgadmin_connect_render import *
 
@@ -36,7 +40,6 @@ texto = st.text_input('Ingrese el texto (en inglés) a clasificar aquí: 👇')
 # Define una función anónima para envolver la llamada a clasificar_texto
 clasificar = lambda: clasificar_texto(texto)
 
-
 # Botón para hacer la predicción
 if st.button('Predecir', on_click=clasificar, disabled=len(texto) == 0):
     
@@ -48,22 +51,28 @@ if st.button('Predecir', on_click=clasificar, disabled=len(texto) == 0):
     st.write('Categoría predicha:', f"<span style='color:green'><b>{resultado['categoria']}</b></span>", unsafe_allow_html=True)
     st.write('Probabilidad:', f"<span style='color:green'><b>{probabilidad_formateada}</b></span>", unsafe_allow_html=True)
 
+    # sobreescribe la probabilidad sacando el "%" para ser guardada en la base de datos
     probabilidad_formateada = float(probabilidad_formateada.replace('%', ''))
     # Guarda la información en una base de datos
     guardar_prediccion(texto, resultado['categoria'], probabilidad_formateada)
     
+    # Cambia el estado de predicción para que guarde la categoría predicha
     st.session_state.prediccion = resultado['categoria']
     
-    # Cambia el estado de la variable a True para indicar que la predicción se ha realizado
+    # Cambia el estado de prediccion_realizada a True para indicar que la predicción se ha realizado
     st.session_state.prediccion_realizada = True
 
+# Muestra la siguiente sección si la predicción se realizó
 if st.session_state.prediccion_realizada:
+    # Subtítulo de la sección
     st.markdown('#### Califica la predicción:')
         
-    # Botón de calificación "👍"
+    # Botón de calificación positiva
     if st.button('👍'):
+        # Define la variable calificación y la guarda junto con el texto en la BD
         calificacion = 'Correcto'
         guardar_calificacion(texto, calificacion)
+        # Mensajes de éxito
         st.success('Gracias por calificar la predicción 🤗')
         st.success('Intenta otra predicción 🤓')
         # Restablece las variables de estado para permitir una nueva predicción
@@ -71,19 +80,20 @@ if st.session_state.prediccion_realizada:
         st.session_state.mostrar_casillas = False
         st.session_state.categoria_correcta = False
 
-    # Botón para mostrar las casillas de verificación
+    # Botón de calificación negativa
     if st.button('👎'):
+        # Cambia el estado de mostrar_casillas para que se muestren las checkbox
         st.session_state.mostrar_casillas = True
         
     # Lista de todas las categorías posibles
     categorias = ["Meteorology", "Sport", "Biology"]
 
-    print("predicion es", st.session_state.prediccion)
     # Filtra las categorías que son diferentes a la predicción del modelo
     categorias_filtradas = [cat for cat in categorias if not cat.startswith(st.session_state.prediccion)]
 
-       
+    # Sección con las checkbox
     if st.session_state.mostrar_casillas:
+        # Subtítulo de la sección
         st.markdown('##### Seleccione cuál era la categoría correcta:')
         
         # Muestra las casillas de verificación solo para las categorías filtradas
@@ -92,10 +102,13 @@ if st.session_state.prediccion_realizada:
             if seleccionada:
                 st.session_state.categoria_correcta = categoria
 
+        # Guarda la selección correcta elegida por el usuario
         if st.session_state.categoria_correcta:
             guardar_calificacion(texto, st.session_state.categoria_correcta)
+            # Mensajes de éxito
             st.success('Gracias por calificar la predicción 🤗')
             st.success('Intenta otra predicción 🤓')
+            # Restablece las variables de estado para permitir una nueva predicción
             st.session_state.prediccion_realizada = False
             st.session_state.mostrar_casillas = False
             st.session_state.categoria_correcta = None

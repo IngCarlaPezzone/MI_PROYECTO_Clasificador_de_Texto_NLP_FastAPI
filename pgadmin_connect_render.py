@@ -10,7 +10,7 @@ import psycopg2
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 # Inicializa la conexión
-@st.cache_data(allow_output_mutation=True)
+@st.cache_data
 def init_connection():
     return psycopg2.connect(DATABASE_URL)
 

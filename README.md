@@ -82,9 +82,25 @@ Se agregaron nuevas funcionalidades a la aplicación de streamlit para guardar e
 
 Para hacer esta integración con la base de datos se realizaron los siguientes pasos:
 
-- Se modificó el código `st_app.py` para agregar las nuevas funcionalidades.
-- Se creo el archivo `pgadmin_connect_render.py` donde contiene la conexión a la base de datos Postgres que proporciona Render y las funciones que permiten guarda los datos a la base de datos.
+- Se modificó el código [st_app.py](st_app.py) para agregar las nuevas funcionalidades.
+- Se creo el archivo [pgadmin_connect_render.py](pgadmin_connect_render.py) donde contiene la conexión a la base de datos Postgres que proporciona Render y las funciones que permiten guarda los datos a la base de datos.
 - Se agregó un nuevo servicio **PostgreSQL** en `render.com`.
 - Se agregó como variable de ambiente la **Internal Database URL** para conectar el proyecto con la base de datos de Render.
 - Se creo una base de datos en `pgAdmin` conectada a la **External Database URL** para conectar con la base de datos de Render. Allí se creó una nueva tabla *predicciones* con los *campos id*, *texto*, *resultado*, *probabilidad_formateada* y *calificacion* donde se almacenan los datos generados por la aplicación.
-- Finalmente, el servicio queda corriendo en [https://clasificatexto.onrender.com/](https://clasificatexto.onrender.com/).
+- Finalmente, el servicio queda corriendo en [https://clasificatexto.onrender.com/](https://clasificatexto.onrender.com/). 
+
+A continuación, se muestran algunas imágenes de la aplicación:
+
+#### Opciones para calificar la predicción
+
+![]()
+
+#### Resultado de predicción positiva
+
+![]()
+
+#### Opciones cuando la predicción fue negativa
+
+Aca se muestran las opciones distintas a la que predijo el modelo. Porque si califica la predicción como 👎 quiere decir que esa categoría no era correcta y debe elegir por alguna de las otras dos categorías.
+
+![]()
